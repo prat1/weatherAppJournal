@@ -1,6 +1,6 @@
 /* Global Variables */
-let baseUrl = "https://api.openweathermap.org/data/2.5/weather?";
-let apiKey = "&apikey=10f94f4bf95e64e8334745805a452c6b";
+const baseUrl = "https://api.openweathermap.org/data/2.5/weather?";
+const apiKey = "&apikey=10f94f4bf95e64e8334745805a452c6b";
 let countryCode = "DE";
 let defaultZipcode =  "70372";
 // Create a new date instance dynamically with JS
@@ -8,6 +8,7 @@ let d = new Date();
 let dayDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 document.getElementById('generate').addEventListener('click',performAction);
 function performAction(e){
+	e.preventDefault();
 	console.log("method called");
 	const zipcode = document.getElementById('zip').value;
 	let userResponse = document.getElementById("feelings").value;
@@ -79,7 +80,7 @@ const updateUI = async (url='') => {
 		const allData = await request.json()
 		console.log("allData" ,allData);
 		
-		
+		/*
 		document.getElementById("date").innerHTML = "Date:  " + allData[allData.length-1].date;
 		document.getElementById("temp").innerHTML = "Temperature:  "+allData[allData.length-1].temperature;
 		document.getElementById("city").innerHTML = "City:  "+allData[allData.length-1].city;
@@ -88,9 +89,9 @@ const updateUI = async (url='') => {
 		  }else{
 		document.getElementById("content").innerHTML = "You Feel:  " +allData[allData.length-1].userResponse + "!";
 		}
+		*/
 		
 		
-		/*
 		document.getElementById("date").innerHTML = "Date:  " + allData.date;
 		document.getElementById("temp").innerHTML = "Temperature:  "+allData.temperature;
 		document.getElementById("city").innerHTML = "City:  "+allData.city;
@@ -99,7 +100,7 @@ const updateUI = async (url='') => {
 		  }else{
 		document.getElementById("content").innerHTML = "You Feel:  " +allData.userResponse + "!";
 		}
-		*/
+		
 		document.querySelector('.entry').style.display = "block";
 	}catch(error){
 		console.log("error occured", error);
